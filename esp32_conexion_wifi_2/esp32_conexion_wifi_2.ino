@@ -14,7 +14,6 @@ void setup(){
 
 void callback(char* topic, byte* payload, unsigned int length){
 
-  //Serial.println("Recibimos algo");
   payload[length]='\0';
   String val = String((char*)payload);
   Serial.println(val);
