@@ -7,7 +7,7 @@ PubSubClient client(espClient);
 void setup(){
   
   setup_wifi();
-  client.setServer("34.201.114.143",1883);
+  client.setServer("44.204.191.227",1883);
 }
 
 void loop(){
@@ -33,7 +33,7 @@ void reconnect(){
 void setup_wifi(){
 
   Serial.begin(9600);
-  WiFi.begin("MAUROMONTOYA","04021999"); //se habilitará el modo estación
+  WiFi.begin("Educatronicos","Edu12345"); //se habilitará el modo estación
 
   // Mientras el ESP32 no se conecte al AP:
   while(WiFi.status() != WL_CONNECTED){
