@@ -8,7 +8,7 @@ IPAddress subnet(255,255,255,0);
 
 void setup() {
   Serial.begin(9600);
-  WiFi.begin("MAUROMONTOYA","04021999"); //se habilitará el modo estación
+  WiFi.begin("Educatronicos","Edu12345"); //se habilitará el modo estación
   WiFi.config(ip,dns,gateway,subnet);
   
   while(WiFi.status() != WL_CONNECTED){ 
