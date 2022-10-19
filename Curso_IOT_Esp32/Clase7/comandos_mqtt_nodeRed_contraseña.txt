@@ -1,0 +1,25 @@
+-> Para entrar como superusuario
+sudo su
+
+-> Para dirigirme al usuario donde instale NodeRed
+cd /home/ubuntu/.node-red
+
+-> Para generar una contraseña cifrada
+node-red admin hash-pw
+
+// password: CursoIOT
+// Contraseña cifrada generada (esto varía en cada ejecucion): 
+$2b$08$KxsQ7wDXf6.id4uHSkrIP.Zp4FtEzk/Ur.tEEl8rs3jyGljV5ZJBC
+
+-> Ingresar a settings
+nano settings.js
+
+-> Reiniciar Node Red
+systemctl restart node-red
+
+
+
+
+
+
+

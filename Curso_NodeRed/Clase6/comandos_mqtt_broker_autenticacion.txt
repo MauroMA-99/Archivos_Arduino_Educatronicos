@@ -1,0 +1,35 @@
+// Crear un nuevo Usuario
+
+sudo su
+adduser educatronicosiot
+usermod -aG sudo educatronicosiot
+
+-> Usuario: educatronicosiot
+-> Contraseña: 12345678
+
+-------------------------------------
+
+// Broker
+
+sudo mosquitto_passwd -c /etc/mosquitto/passwd educatronicosiot
+
+-> Fichero: 
+sudo nano /etc/mosquitto/conf.d/default.conf
+
+-> Lo que coloco en el fichero:
+allow_anonymous false
+password_file /etc/mosquitto/passwd
+
+-> Reinicio el broker Mosquitto
+systemctl restart mosquitto
+
+-> Verificar el funcionamiento del broker
+systemctl status mosquitto
+
+-> Testeo del broker: comando suscriptor
+mosquitto_sub -h localhost -t test -u educatronicosiot -P 12345678
+
+-> Testeo del broker: comando publicador
+mosquitto_pub -h localhost -t test -m "hello world" -u educatronicosiot -P 12345678
+
+

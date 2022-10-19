@@ -1,0 +1,24 @@
+-> Para entrar como superusuario
+sudo su
+
+------------------------------------------------------------------
+
+-> Instalacion de Apache Server, PHP7, MySQL, PHPMYADMIN
+
+sudo apt-get install apache2
+
+sudo apt-get install libapache2-mod-php
+sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql php-cgi php-curl php-json
+
+sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+sudo mysql
+
+alter user root@localhost identified with mysql_native_password by 'curso_iotesp32';
+flush privileges;
+exit
+
+sudo apt-get install phpmyadmin
+
+sudo chmod 777 -R /var/www
+
+sudo service apache2 restart
