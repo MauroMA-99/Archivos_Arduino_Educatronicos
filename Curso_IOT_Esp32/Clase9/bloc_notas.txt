@@ -1,0 +1,9 @@
+
+
+-> Usuario de Base de datos: root
+-> Contraseña de Base de datos: curso_iotesp32
+
+
+
+INSERT INTO `datos-esp32` (`ID`, `FECHA`, `DEVICE`, `TEMPERATURA`, `HUMEDAD`, `LUMINOSIDAD`) VALUES (NULL, CURRENT_TIMESTAMP, 'ESP8266', '20.5', '89.3', '500');
+

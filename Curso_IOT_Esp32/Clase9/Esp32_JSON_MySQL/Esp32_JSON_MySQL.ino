@@ -26,7 +26,7 @@
 
 const char* ssid = "Educatronicos";
 const char* password = "Edu12345";
-const char* mqtt_server = "ec2-44-201-223-234.compute-1.amazonaws.com";
+const char* mqtt_server = "ec2-3-86-227-254.compute-1.amazonaws.com";
 String username_mqtt="educatronicosiot";
 String password_mqtt="12345678";
 
@@ -130,12 +130,12 @@ void loop() {
 
     StaticJsonDocument<128> doc;
 
-    doc["Dispositivo"] = "ESP32";
-    doc["Anho"] = 2022;
-    doc["Empresa"] = "Educatronicos";
-    doc["Temperatura"] = random(15,35);
-    doc["Humedad"] = random(60,90);
-    doc["Luminosidad"] = random(100,400);
+    doc["DEVICE"] = "ESP32";
+    //doc["Anho"] = 2022;
+    //doc["Empresa"] = "Educatronicos";
+    doc["TEMPERATURA"] = random(15,35);
+    doc["HUMEDAD"] = random(60,90);
+    doc["LUMINOSIDAD"] = random(100,400);
 
     String output;
     

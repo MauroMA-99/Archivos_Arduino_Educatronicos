@@ -1,0 +1,191 @@
+[
+    {
+        "id": "03f2413402f0af71",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "878107336c5209a7",
+        "type": "mqtt in",
+        "z": "03f2413402f0af71",
+        "name": "",
+        "topic": "test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "619ffe2532033e07",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 220,
+        "wires": [
+            [
+                "0cfe36fe90808cbc"
+            ]
+        ]
+    },
+    {
+        "id": "de7f590921dd51aa",
+        "type": "debug",
+        "z": "03f2413402f0af71",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "0cfe36fe90808cbc",
+        "type": "json",
+        "z": "03f2413402f0af71",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 310,
+        "y": 220,
+        "wires": [
+            [
+                "82a6655475f49a1c"
+            ]
+        ]
+    },
+    {
+        "id": "10b3e20855b96f3d",
+        "type": "mysql",
+        "z": "03f2413402f0af71",
+        "mydb": "ad491c1475ab68ec",
+        "name": "",
+        "x": 660,
+        "y": 120,
+        "wires": [
+            [
+                "de7f590921dd51aa"
+            ]
+        ]
+    },
+    {
+        "id": "82a6655475f49a1c",
+        "type": "function",
+        "z": "03f2413402f0af71",
+        "name": "function 1",
+        "func": "var query =\"INSERT INTO `datos-esp32` (`ID`, `FECHA`, `DEVICE`, `TEMPERATURA`, `HUMEDAD`, `LUMINOSIDAD`) VALUES (NULL, CURRENT_TIMESTAMP, '\";\nquery = query + msg.payload.DEVICE + \"','\";\nquery = query + msg.payload.TEMPERATURA + \"','\";\nquery = query + msg.payload.HUMEDAD + \"','\";\nquery = query + msg.payload.LUMINOSIDAD + \"');\";\n\nmsg.topic=query;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1b3d5cc1e23147f1",
+        "type": "inject",
+        "z": "03f2413402f0af71",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM `datos-esp32` WHERE TEMPERATURA>30 && TEMPERATURA<34;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 420,
+        "y": 60,
+        "wires": [
+            [
+                "10b3e20855b96f3d"
+            ]
+        ]
+    },
+    {
+        "id": "a8252d9304ba0757",
+        "type": "ui_spacer",
+        "z": "03f2413402f0af71",
+        "name": "spacer",
+        "group": "2c2884ed20872170",
+        "order": 2,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "619ffe2532033e07",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ad491c1475ab68ec",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "DB_PRUEBA",
+        "tz": "",
+        "charset": "UTF8",
+        "credentials": {}
+    },
+    {
+        "id": "2c2884ed20872170",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "2328f75482cf1113",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2328f75482cf1113",
+        "type": "ui_tab",
+        "name": "Estación Metereologica",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
