@@ -1,0 +1,252 @@
+[
+    {
+        "id": "ceb43e7fa91ce083",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5d9e101caed9462c",
+        "type": "ui_media",
+        "z": "ceb43e7fa91ce083",
+        "group": "f862168b461331ea",
+        "name": "",
+        "width": 7,
+        "height": "7",
+        "order": 1,
+        "category": "educatronicos",
+        "file": "educatronicos_imagen_2.png",
+        "layout": "center",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 310,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "657717c4c4f9c4f5",
+        "type": "ui_chart",
+        "z": "ceb43e7fa91ce083",
+        "name": "",
+        "group": "a6367038020ea8ba",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Cantidad de visitas por país",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#eff2f6",
+            "#ff7f0e",
+            "#346f34",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 580,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fa168bb5eaada969",
+        "type": "function",
+        "z": "ceb43e7fa91ce083",
+        "name": "function 1",
+        "func": "msg.payload=\n[{\n    \"series\": [\"Peru\", \"Mexico\", \"Colombia\"],\n    \"data\": [[Math.floor(Math.random() * 100)], [Math.floor(Math.random() * 100)], [Math.floor(Math.random() * 100)]],\n    \"labels\": [\"Visitas al dia\"]\n}]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "657717c4c4f9c4f5"
+            ]
+        ]
+    },
+    {
+        "id": "d3765a3092173c5e",
+        "type": "inject",
+        "z": "ceb43e7fa91ce083",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "fa168bb5eaada969"
+            ]
+        ]
+    },
+    {
+        "id": "daf432fb66946114",
+        "type": "ui_button",
+        "z": "ceb43e7fa91ce083",
+        "name": "",
+        "group": "a6367038020ea8ba",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Actualizar",
+        "tooltip": "Este boton refresca los datos",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "fa168bb5eaada969",
+                "34d5354716c15d1a"
+            ]
+        ]
+    },
+    {
+        "id": "c02e224393d98180",
+        "type": "ui_gauge",
+        "z": "ceb43e7fa91ce083",
+        "name": "",
+        "group": "f733108e68b6eb3e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "Nuevos suscriptores al dia",
+        "label": "suscriptores",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "15",
+        "colors": [
+            "#b3001b",
+            "#e6e600",
+            "#2318b9"
+        ],
+        "seg1": "5",
+        "seg2": "10",
+        "className": "",
+        "x": 580,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "34d5354716c15d1a",
+        "type": "function",
+        "z": "ceb43e7fa91ce083",
+        "name": "function 2",
+        "func": "msg.payload=Math.floor(Math.random()*15)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 320,
+        "wires": [
+            [
+                "c02e224393d98180"
+            ]
+        ]
+    },
+    {
+        "id": "2a6457da36274aac",
+        "type": "ui_spacer",
+        "z": "ceb43e7fa91ce083",
+        "name": "spacer",
+        "group": "a6367038020ea8ba",
+        "order": 2,
+        "width": 8,
+        "height": 1
+    },
+    {
+        "id": "f862168b461331ea",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "09f019b60143b75e",
+        "order": 1,
+        "disp": false,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a6367038020ea8ba",
+        "type": "ui_group",
+        "name": "Grafica de visitas",
+        "tab": "09f019b60143b75e",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f733108e68b6eb3e",
+        "type": "ui_group",
+        "name": "Nuevos suscriptores",
+        "tab": "09f019b60143b75e",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "09f019b60143b75e",
+        "type": "ui_tab",
+        "name": "Dashboard de educatronicos",
+        "icon": "mi-insights",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

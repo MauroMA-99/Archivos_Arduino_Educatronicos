@@ -1,0 +1,446 @@
+[
+    {
+        "id": "8e7da0fd9f7d1f3c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d89fb2b339483013",
+        "type": "inject",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "lum",
+        "payloadType": "flow",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "16e7f6da946b8917"
+            ]
+        ]
+    },
+    {
+        "id": "5bb5ccece6bbede4",
+        "type": "ui_slider",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "label": "Luminosidad",
+        "tooltip": "Este slider sirve para variar la luminosidad",
+        "group": "ea068651a0325a80",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "300",
+        "step": 1,
+        "className": "",
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "d67f2239bbdfc760",
+                "74acf4507747df43"
+            ]
+        ]
+    },
+    {
+        "id": "d67f2239bbdfc760",
+        "type": "ui_gauge",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "group": "e901ac5a1a6ec276",
+        "order": 1,
+        "width": "6",
+        "height": "6",
+        "gtype": "donut",
+        "title": "Luminosidad inst",
+        "label": "lux",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "300",
+        "colors": [
+            "#445044",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "150",
+        "seg2": "250",
+        "className": "",
+        "x": 530,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "16e7f6da946b8917",
+        "type": "ui_chart",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "group": "e901ac5a1a6ec276",
+        "order": 2,
+        "width": "10",
+        "height": "6",
+        "label": "Luminosidad vs tiempo",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 540,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "74acf4507747df43",
+        "type": "change",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lum",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 260,
+        "wires": [
+            [
+                "56dadbde7f8afe6b"
+            ]
+        ]
+    },
+    {
+        "id": "21dbc20c6821a466",
+        "type": "ui_slider",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "label": "Distancia",
+        "tooltip": "",
+        "group": "ea068651a0325a80",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "300",
+        "step": 1,
+        "className": "",
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "adc11cd648466db3",
+                "560c1165536a5497"
+            ]
+        ]
+    },
+    {
+        "id": "adc11cd648466db3",
+        "type": "ui_gauge",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "group": "07d15d4222f5abfd",
+        "order": 1,
+        "width": "6",
+        "height": "6",
+        "gtype": "donut",
+        "title": "Distancia inst",
+        "label": "cm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "300",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "200",
+        "seg2": "250",
+        "className": "",
+        "x": 550,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "434d3bc3d75d40bd",
+        "type": "ui_chart",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "group": "07d15d4222f5abfd",
+        "order": 2,
+        "width": "10",
+        "height": "6",
+        "label": "Distancia vs tiempo",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 590,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "560c1165536a5497",
+        "type": "change",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "dist",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 480,
+        "wires": [
+            [
+                "56dadbde7f8afe6b"
+            ]
+        ]
+    },
+    {
+        "id": "b138a10346c75378",
+        "type": "inject",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "dist",
+        "payloadType": "flow",
+        "x": 180,
+        "y": 520,
+        "wires": [
+            [
+                "434d3bc3d75d40bd"
+            ]
+        ]
+    },
+    {
+        "id": "29edeb5261ec624d",
+        "type": "ui_led",
+        "z": "8e7da0fd9f7d1f3c",
+        "order": 2,
+        "group": "ea068651a0325a80",
+        "width": "6",
+        "height": "6",
+        "label": "Luz del poste",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 1090,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "56dadbde7f8afe6b",
+        "type": "change",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lum2",
+                "pt": "msg",
+                "to": "lum",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "dist2",
+                "pt": "msg",
+                "to": "dist",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 260,
+        "wires": [
+            [
+                "41b81899c1f3764e"
+            ]
+        ]
+    },
+    {
+        "id": "41b81899c1f3764e",
+        "type": "function",
+        "z": "8e7da0fd9f7d1f3c",
+        "name": "function 1",
+        "func": "if(msg.lum2<=150 && msg.dist2<=200){\n\n    msg.payload=true;\n}\nelse{\n\n    msg.payload=false;\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 320,
+        "wires": [
+            [
+                "29edeb5261ec624d"
+            ]
+        ]
+    },
+    {
+        "id": "ea068651a0325a80",
+        "type": "ui_group",
+        "name": "Datos",
+        "tab": "3cac739c220e162a",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e901ac5a1a6ec276",
+        "type": "ui_group",
+        "name": "Luminosidad del ambiente",
+        "tab": "3cac739c220e162a",
+        "order": 2,
+        "disp": true,
+        "width": "18",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "07d15d4222f5abfd",
+        "type": "ui_group",
+        "name": "Distancia poste-persona",
+        "tab": "3cac739c220e162a",
+        "order": 3,
+        "disp": true,
+        "width": "18",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3cac739c220e162a",
+        "type": "ui_tab",
+        "d": true,
+        "name": "Sistema de Luz Inteligente",
+        "icon": "mi-coronavirus",
+        "disabled": true,
+        "hidden": true
+    }
+]
